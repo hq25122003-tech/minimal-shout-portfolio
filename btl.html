@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Các Phong Cách Kiến Trúc</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        body { display: flex; flex-direction: column; min-height: 100vh; background: #f9f9f9; }
+        
+        header { background: #222; color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: relative; }
+        .logo { font-size: 1.5em; font-weight: bold; }
+        
+        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav a { color: #fff; text-decoration: none; display: block; padding: 10px; }
+        
+        /* Dropdown */
+        .dropdown { position: relative; }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #333; min-width: 220px; z-index: 10; }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown-content a:hover { background: #555; }
+        
+        .menu-toggle { display: none; cursor: pointer; font-size: 1.5em; }
+        
+        /* Bố cục lưới cho các loại kiến trúc */
+        main { flex: 1; padding: 40px 20px; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; }
+        .card { background: #fff; padding: 25px 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .card h3 { color: #222; margin-bottom: 10px; }
+        .card p { color: #666; font-size: 0.9em; }
+        
+        footer { background: #222; color: #aaa; text-align: center; padding: 15px; }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            nav ul { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background: #222; z-index: 20; }
+            nav ul.active { display: flex; }
+            .dropdown-content { position: static; display: none; background: #444; }
+            .dropdown.active .dropdown-content { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ArchStyle</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="#">Trang chủ</a></li>
+                <li class="dropdown" onclick="toggleDropdown(this)">
+                    <a href="#">Loại Kiến Trúc ▾</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Cổ điển (Classical)</a></li>
+                        <li><a href="#">Gothic</a></li>
+                        <li><a href="#">Phục hưng (Renaissance)</a></li>
+                        <li><a href="#">Hiện đại (Modern)</a></li>
+                        <li><a href="#">Đương đại (Contemporary)</a></li>
+                        <li><a href="#">Kiến trúc Xanh</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Giới thiệu</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Khám Phá Các Phong Cách Kiến Trúc</h1>
+        <p>Từ những công trình cổ đại đến xu hướng tương lai.</p>
+        <div class="grid">
+            <a href="linkCodien.html" class="card-link">
+                <div class="card">
+                    <h3>Cổ điển</h3>
+                    <p>Cột đá tráng lệ của Hy Lạp & La Mã.</p>
+                </div>
+            </a>
+            
+            <a href="linkGothic.html" class="card-link">
+                <div class="card">
+                    <h3>Gothic</h3>
+                    <p>Vòm nhọn, thanh mảnh & kính màu rực rỡ.</p>
+                </div>
+            </a>
+            
+            <a href="linkPhuchung.html" class="card-link">
+                <div class="card">
+                    <h3>Phục hưng</h3>
+                    <p>Tỷ lệ hoàn hảo & đối xứng chuẩn mực.</p>
+                </div>
+            </a>
+            
+            <a href="linkHiendai.html" class="card-link">
+                <div class="card">
+                    <h3>Hiện đại</h3>
+                    <p>Tối giản, ưu tiên công năng & vật liệu mới.</p>
+                </div>
+            </a>
+            
+            <a href="linkDuongdai.html" class="card-link">
+                <div class="card">
+                    <h3>Đương đại</h3>
+                    <p>Thiết kế đột phá, không rập khuôn.</p>
+                </div>
+            </a>
+            
+            <a href="linkXanh.html" class="card-link">
+                <div class="card">
+                    <h3>Kiến trúc Xanh</h3>
+                    <p>Thân thiện môi trường & phát triển bền vững.</p>
+                </div>
+            </a>
+        </div>
+        
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ArchStyle.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() { document.getElementById('nav-menu').classList.toggle('active'); }
+        function toggleDropdown(el) { if(window.innerWidth <= 768) el.classList.toggle('active'); }
+    </script>
+</body>
+</html>
