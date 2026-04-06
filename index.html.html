@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Các Phong Cách Kiến Trúc</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -17,15 +17,13 @@
                 <li class="dropdown" onclick="toggleDropdown(this)">
                     <a href="#">Loại Kiến Trúc ▾</a>
                     <ul class="dropdown-content">
-                        <li><a href="#">Cổ điển (Classical)</a></li>
-                        <li><a href="#">Gothic</a></li>
-                        <li><a href="#">Phục hưng (Renaissance)</a></li>
-                        <li><a href="#">Hiện đại (Modern)</a></li>
-                        <li><a href="#">Đương đại (Contemporary)</a></li>
-                        <li><a href="#">Kiến trúc Xanh</a></li>
+                        <li><a href="#" onclick="setFilter('codien', this)">Cổ điển</a></li>
+                        <li><a href="#" onclick="setFilter('gothic', this)">Gothic</a></li>
+                        <li><a href="#" onclick="setFilter('hiendai', this)">Hiện đại</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#gallery">Thư viện</a></li>
+                <li><a href="#map-section">Bản đồ</a></li>
             </ul>
         </nav>
     </header>
@@ -33,60 +31,110 @@
     <main>
         <h1>Khám Phá Các Phong Cách Kiến Trúc</h1>
         <p>Từ những công trình cổ đại đến xu hướng tương lai.</p>
-        <div class="grid">
-            <a href="linkCodien.html" class="card-link">
+        
+        <div class="controls-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm phong cách (vd: Gothic)..." onkeyup="applyFilters()">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="setFilter('all', this)">Tất cả</button>
+                <button class="filter-btn" onclick="setFilter('codien', this)">Cổ điển</button>
+                <button class="filter-btn" onclick="setFilter('gothic', this)">Gothic</button>
+                <button class="filter-btn" onclick="setFilter('phuchung', this)">Phục hưng</button>
+                <button class="filter-btn" onclick="setFilter('hiendai', this)">Hiện đại</button>
+            </div>
+        </div>
+
+        <div class="grid" id="cardGrid">
+            <a href="linkCodien.html" class="card-link" data-category="codien">
                 <div class="card">
+                    <img src="https://images.unsplash.com/photo-1555636222-cae831e670b3?auto=format&fit=crop&w=500&q=60" alt="Kiến trúc Cổ điển">
                     <h3>Cổ điển</h3>
                     <p>Cột đá tráng lệ của Hy Lạp & La Mã.</p>
                 </div>
             </a>
-            
-            <a href="https://akisa.vn/kien-truc-gothic.html" class="card-link">
+            <a href="linkGothic.html" class="card-link" data-category="gothic">
                 <div class="card">
+                    <img src="https://images.unsplash.com/photo-1548625361-ec880b98e727?auto=format&fit=crop&w=500&q=60" alt="Kiến trúc Gothic">
                     <h3>Gothic</h3>
                     <p>Vòm nhọn, thanh mảnh & kính màu rực rỡ.</p>
                 </div>
             </a>
-            
-            <a href="linkPhuchung.html" class="card-link">
+            <a href="linkPhuchung.html" class="card-link" data-category="phuchung">
                 <div class="card">
+                    <img src="https://images.unsplash.com/photo-1603414967398-7524e9cbac18?auto=format&fit=crop&w=500&q=60" alt="Kiến trúc Phục hưng">
                     <h3>Phục hưng</h3>
                     <p>Tỷ lệ hoàn hảo & đối xứng chuẩn mực.</p>
                 </div>
             </a>
-            
-            <a href="linkHiendai.html" class="card-link">
+            <a href="linkHiendai.html" class="card-link" data-category="hiendai">
                 <div class="card">
-                    <h3>Hiện đại</h3>
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=500&q=60" alt="Kiến trúc Hiện đại">
+                    <h3>Hiện đại & Đương đại</h3>
                     <p>Tối giản, ưu tiên công năng & vật liệu mới.</p>
                 </div>
             </a>
-            
-            <a href="linkDuongdai.html" class="card-link">
-                <div class="card">
-                    <h3>Đương đại</h3>
-                    <p>Thiết kế đột phá, không rập khuôn.</p>
-                </div>
-            </a>
-            
-            <a href="linkXanh.html" class="card-link">
-                <div class="card">
-                    <h3>Kiến trúc Xanh</h3>
-                    <p>Thân thiện môi trường & phát triển bền vững.</p>
-                </div>
-            </a>
         </div>
-        
-        
+
+        <hr class="divider">
+
+        <section id="gallery">
+            <h2>Thư Viện Trực Quan</h2>
+            <div class="media-grid">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Tòa nhà kính" class="gallery-item" onclick="openLightbox(this.src)">
+                <img src="https://images.unsplash.com/photo-1548625361-ec880b98e727?auto=format&fit=crop&w=800&q=80" alt="Nhà thờ Gothic" class="gallery-item" onclick="openLightbox(this.src)">
+                
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/S22A1x9O710?controls=1" title="Lịch sử kiến trúc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="map-section">
+            <h2>Bản Đồ Công Trình Tiêu Biểu</h2>
+            <p>Khám phá Đấu trường La Mã (Colosseum) tại Ý.</p>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.123073808986!2d12.492230915441486!3d41.89021017922116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f61b6532013ad%3A0x28f1c82e908503c4!2sColosseum!5e0!3m2!1sen!2s!4v1680000000000!5m2!1sen!2s" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 ArchStyle.</p>
+        <p>&copy; 2026 ArchStyle. Thiết kế với sự đam mê kiến trúc.</p>
     </footer>
 
+    <button id="backToTop" onclick="scrollToTop()" title="Lên đầu trang">↑</button>
+
+    <div id="lightboxModal" class="modal" onclick="closeLightbox()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="lightboxImg">
+    </div>
+
     <script>
+        // 1. Mobile Menu
         function toggleMenu() { document.getElementById('nav-menu').classList.toggle('active'); }
         function toggleDropdown(el) { if(window.innerWidth <= 768) el.classList.toggle('active'); }
-    </script>
-</body>
-</html>
+
+        // 2. Logic Bộ Lọc & Tìm Kiếm Kết Hợp
+        let currentCategory = 'all';
+
+        function setFilter(category, btnElement) {
+            currentCategory = category;
+            
+            // Xóa class active ở tất cả nút, thêm vào nút vừa click
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+            
+            applyFilters();
+        }
+
+        function applyFilters() {
+            let searchText = document.getElementById("searchInput").value.toLowerCase();
+            let cards = document.querySelectorAll(".card-link");
+            
+            cards.forEach(card => {
+                let title = card.querySelector("h3").innerText.toLowerCase();
+                let desc = card.querySelector("p").innerText.toLowerCase();
+                let category = card.getAttribute("data-category");
